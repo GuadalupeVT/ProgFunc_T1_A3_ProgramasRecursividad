@@ -1,9 +1,3 @@
-
-/*
-   
-   
-   7)Programa que calcule a cantidad de vocales en una cadena
- */
 import scala.io.StdIn._
 
 object PruebaRecursividad {
@@ -70,8 +64,20 @@ object PruebaRecursividad {
     }
   }
   
- 
- 
+  // 7)Programa que calcule a cantidad de vocales en una cadena
+  def numVocales(cadena:String, cont:Int): Unit={
+    val i=cadena.length()
+    if(i>0){
+      if(cadena.charAt(0)=='a' || cadena.charAt(0)=='e' || cadena.charAt(0)=='i' || cadena.charAt(0)=='o' || cadena.charAt(0)=='u')
+        numVocales(cadena.substring(1),cont+1) 
+      else
+        numVocales(cadena.substring(1),cont)
+    }else
+      println("El numero de vocales en la palabra es: "+cont)
+  }
+
+  
+
   def main(args: Array[String]): Unit = {
     var menu=0
     while(menu<8){
@@ -138,6 +144,13 @@ object PruebaRecursividad {
         println("La conversion a binario es: ")
         conversionBinario(num)
         println()
+      }
+      
+      //opcion numero de vocales en una cadena
+      if(menu == 7){
+        println("Ingresa una cadena: ")
+        val cadena=readLine()
+        numVocales(cadena,0)
       }
       
       

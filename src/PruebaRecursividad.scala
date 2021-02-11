@@ -1,6 +1,6 @@
 
 /*
-   3) Programa que muestre el FACTORIAL de un numero dado
+  
    4) Programa que muestre los cocientes enteros de la division entre entre dos números dados
    5) Programa que muestre cuantos son los divisores enteros entre dos números dados
    6) Programa que muestre la conversión de un numero decimal a su representación en sistema binario.
@@ -22,12 +22,19 @@ object PruebaRecursividad {
   def divisores(num:Int, div:Int): Unit = {
     if (div <= num){
       if( (num%div) == 0){
-        println("El numero "+div+" es divisor de  "+num)
+        println("El numero "+div+" es divisor de "+num)
         divisores(num,div+1)
       }else
         divisores(num,div+1)
     }
-      
+  }
+  
+  //  3) Programa que muestre el FACTORIAL de un numero dado
+  def factorial(inicio:Int,num:Int): Int ={
+    if(num == inicio)
+      inicio
+    else
+      num * factorial(inicio,num-1)
   }
   
  
@@ -57,14 +64,21 @@ object PruebaRecursividad {
         val limInicial=readInt()
          println("Ingresa el limite final: ")
         val limFinal=readInt()
-        println("Resultado: " + sumatoriaConLimite(limInicial,limFinal))
+        println("Resultado de la sumatoria: " + sumatoriaConLimite(limInicial,limFinal))
       }
       
       //Opcion 2
       if(menu ==2){
-        println("Ingresa un numero: ")
+        println("Ingresa un numero para calcular divisores: ")
         val num=readInt()
         divisores(num,1)
+      }
+      
+      //Opcion 3
+      if(menu ==3){
+        println("Ingresa un numero para calcular factorial: ")
+        val num=readInt()
+        println("Resultado: "+factorial(1,num))
       }
       
       

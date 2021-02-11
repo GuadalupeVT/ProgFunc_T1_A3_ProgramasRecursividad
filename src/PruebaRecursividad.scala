@@ -1,6 +1,5 @@
 
 /*
-   2) Programa que muestre los DIVISORES de un numero dado
    3) Programa que muestre el FACTORIAL de un numero dado
    4) Programa que muestre los cocientes enteros de la division entre entre dos números dados
    5) Programa que muestre cuantos son los divisores enteros entre dos números dados
@@ -18,6 +17,20 @@ object PruebaRecursividad {
     else
       limiteFinal + sumatoriaConLimite(limiteInicial,limiteFinal-1)
   }
+  
+  // 2) Metodo que muestre los DIVISORES de un numero dado
+  def divisores(num:Int, div:Int): Unit = {
+    if (div <= num){
+      if( (num%div) == 0){
+        println("El numero "+div+" es divisor de  "+num)
+        divisores(num,div+1)
+      }else
+        divisores(num,div+1)
+    }
+      
+  }
+  
+ 
   
   
   def main(args: Array[String]): Unit = {
@@ -47,6 +60,12 @@ object PruebaRecursividad {
         println("Resultado: " + sumatoriaConLimite(limInicial,limFinal))
       }
       
+      //Opcion 2
+      if(menu ==2){
+        println("Ingresa un numero: ")
+        val num=readInt()
+        divisores(num,1)
+      }
       
       
     }

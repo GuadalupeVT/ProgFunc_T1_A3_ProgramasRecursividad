@@ -1,8 +1,6 @@
 
 /*
-  
-   4) Programa que muestre los cocientes enteros de la division entre entre dos números dados
-   5) Programa que muestre cuantos son los divisores enteros entre dos números dados
+   
    6) Programa que muestre la conversión de un numero decimal a su representación en sistema binario.
    7)Programa que calcule a cantidad de vocales en una cadena
  */
@@ -37,9 +35,34 @@ object PruebaRecursividad {
       num * factorial(inicio,num-1)
   }
   
+  // 4) Programa que muestre los cocientes enteros de la division entre entre dos números dados
+  def cocientes(num1:Int, num2:Int, x:Int): Unit ={
+     println(num1+"-"+num2+"="+(num1-num2))
+    if((num1-num2)==0 || (num1-num2)==1)
+      println("El cociente es: "+x)
+    else{
+      cocientes(num1-num2,num2,x+1)
+    }
+  }
+  
+  // 5) Programa que muestre cuantos son los divisores enteros entre dos números dados
+  def divisoresDeDosNumeros(num1:Int, num2:Int, div:Int): Unit = {
+    var n=0
+    if (div <= num1 || div <=num2){
+      if( (num1%div) == 0 && (num2%div) == 0){
+        println("El numero "+div+" es divisor de "+num1+ " y "+num2)
+        n+=1
+        divisoresDeDosNumeros(num1,num2,div+1)
+      }else
+        divisoresDeDosNumeros(num1,num2,div+1)
+    }
+    if(div==num1 || div==num2){
+      println("Se encontraron "+n+" divisores")
+    }
+  }
+  
  
-  
-  
+ 
   def main(args: Array[String]): Unit = {
     var menu=0
     while(menu<8){
@@ -58,7 +81,7 @@ object PruebaRecursividad {
       
       //Evaluacion de las opciones
       
-      //Opcion 1
+      //Opcion sumatoria con limites
       if(menu==1){
         println("Ingresa el limite inicial: ")
         val limInicial=readInt()
@@ -67,18 +90,38 @@ object PruebaRecursividad {
         println("Resultado de la sumatoria: " + sumatoriaConLimite(limInicial,limFinal))
       }
       
-      //Opcion 2
+      //Opcion divisores
       if(menu ==2){
         println("Ingresa un numero para calcular divisores: ")
         val num=readInt()
         divisores(num,1)
       }
       
-      //Opcion 3
+      //Opcion factorial
       if(menu ==3){
         println("Ingresa un numero para calcular factorial: ")
         val num=readInt()
         println("Resultado: "+factorial(1,num))
+      }
+      
+      //Opcion cocientes
+      if(menu ==4){
+        println("Ingresa un dividendo: ")
+        val num1=readInt()
+        println("Ingresa un divisor: ")
+        val num2=readInt()
+        cocientes(num1,num2,1)
+      }
+      
+      //Cuantos divisores entre dos numeros enteros
+      if(menu == 5){
+        println("Ingresa un dividendo: ")
+        val num1=readInt()
+        println("Ingresa un divisor: ")
+        val num2=readInt()
+        
+        divisoresDeDosNumeros(num1,num2,1)
+        
       }
       
       

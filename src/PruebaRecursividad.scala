@@ -1,7 +1,7 @@
 
 /*
    
-   6) Programa que muestre la conversión de un numero decimal a su representación en sistema binario.
+   
    7)Programa que calcule a cantidad de vocales en una cadena
  */
 import scala.io.StdIn._
@@ -57,6 +57,16 @@ object PruebaRecursividad {
         divisoresDeDosNumeros(num1,num2,div+1,n)
     }else{
       println("El numero de divisores es: "+n)
+    }
+  }
+  
+  // 6) Programa que muestre la conversión de un numero decimal a su representación en sistema binario.
+  def conversionBinario(num:Int): Unit = {
+    if(num<2)
+      print(num)
+    else{
+      conversionBinario(num/2)
+      print(num%2)
     }
   }
   
@@ -118,9 +128,16 @@ object PruebaRecursividad {
         val num1=readInt()
         println("Ingresa un divisor: ")
         val num2=readInt()
-        
         divisoresDeDosNumeros(num1,num2,1,0)
-        
+      }
+      
+      //Opcion conversion binario
+      if(menu == 6){
+        println("Ingresa un numero decimal: ")
+        val num=readInt()
+        println("La conversion a binario es: ")
+        conversionBinario(num)
+        println()
       }
       
       

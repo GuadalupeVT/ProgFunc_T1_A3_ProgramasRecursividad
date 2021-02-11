@@ -17,13 +17,15 @@ object PruebaRecursividad {
   }
   
   // 2) Metodo que muestre los DIVISORES de un numero dado
-  def divisores(num:Int, div:Int): Unit = {
+  def divisores(num:Int, div:Int, n:Int): Unit = {
     if (div <= num){
       if( (num%div) == 0){
         println("El numero "+div+" es divisor de "+num)
-        divisores(num,div+1)
+        divisores(num,div+1,n+1)
       }else
-        divisores(num,div+1)
+        divisores(num,div+1,n)
+    }else{
+      println("El numero de divisores es: "+n)
     }
   }
   
@@ -46,18 +48,15 @@ object PruebaRecursividad {
   }
   
   // 5) Programa que muestre cuantos son los divisores enteros entre dos números dados
-  def divisoresDeDosNumeros(num1:Int, num2:Int, div:Int): Unit = {
-    var n=0
-    if (div <= num1 || div <=num2){
-      if( (num1%div) == 0 && (num2%div) == 0){
-        println("El numero "+div+" es divisor de "+num1+ " y "+num2)
-        n+=1
-        divisoresDeDosNumeros(num1,num2,div+1)
+  def divisoresDeDosNumeros(num1:Int, num2:Int, div:Int, n:Int): Unit = {
+    if (div <= num1 || div<=num2){
+      if( (num1%div) == 0 && (num2%div) ==0){
+        println("El numero "+div+" es divisor de "+num1+" y "+num2)
+        divisoresDeDosNumeros(num1,num2,div+1,n+1)
       }else
-        divisoresDeDosNumeros(num1,num2,div+1)
-    }
-    if(div==num1 || div==num2){
-      println("Se encontraron "+n+" divisores")
+        divisoresDeDosNumeros(num1,num2,div+1,n)
+    }else{
+      println("El numero de divisores es: "+n)
     }
   }
   
@@ -94,7 +93,7 @@ object PruebaRecursividad {
       if(menu ==2){
         println("Ingresa un numero para calcular divisores: ")
         val num=readInt()
-        divisores(num,1)
+        divisores(num,1,0)
       }
       
       //Opcion factorial
@@ -120,7 +119,7 @@ object PruebaRecursividad {
         println("Ingresa un divisor: ")
         val num2=readInt()
         
-        divisoresDeDosNumeros(num1,num2,1)
+        divisoresDeDosNumeros(num1,num2,1,0)
         
       }
       
